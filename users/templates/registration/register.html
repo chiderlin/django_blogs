@@ -1,0 +1,17 @@
+{% extends "blog_app/base.html" %}
+{% load bootstrap3 %}
+{% block header %}
+    <h2>Register a new account now!</h2>
+{% endblock header %}
+
+{% block content %}
+    <form action="{% url 'users:register' %}" method="post" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <!-- {% buttons %} 這邊不用給也是會跑得出來樣式，所以?不知道為什麼 -->
+        <button name="submit" class="btn btn-primary">Register</button>
+        <!-- {% endbuttons %} -->
+        <!-- views有寫redirect 這邊就不用寫 也會正確導回去該頁面 -->
+        <!-- <input type="hidden" name="next" value="{% url 'blog_app:homepage' %}" /> -->
+    </form>
+{% endblock content %}

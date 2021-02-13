@@ -1,0 +1,14 @@
+{% extends "blog_app/base.html" %}
+{% load bootstrap3 %}
+
+{% block header %}
+    <h2><a href="{% url 'blog_app:homepage'%}">Home Page</a></h2>
+{% endblock header %}
+
+{% block content %}
+        <form action="{% url 'blog_app:edit_post' title.id %}" method="post" class="form">
+            {% csrf_token %}
+            {% bootstrap_form form%}
+            <button name="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+{% endblock content %}

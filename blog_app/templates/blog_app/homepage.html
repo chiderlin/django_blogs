@@ -1,0 +1,30 @@
+{% extends "blog_app/base.html" %}
+{% block header %}
+    <h2>All POSTS</h2>
+{% endblock header %}
+
+{% block content %}
+
+    <ul>
+    {% for title in titles %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>{{ title.date_added }}
+                    <small>
+                        <a href="{% url 'blog_app:edit_post' title.id %}">Edit post</a>
+                    </small>
+                </h4>
+                <h3>{{ title }}</h3>
+            </div>
+            <div class="panel-body">
+                <h4>{{ title.text }}</h4>
+            </div>
+        </div>
+    {% empty %}
+        <li>
+            <h3>There are no entries for this topic yet.</h3>
+        </li>
+    {% endfor %}
+    </ul>
+
+{% endblock content %}
